@@ -1,0 +1,12 @@
+D:\SequenceAlignmentTool\Backend\publish\Backend.exe
+D:\SequenceAlignmentTool\Backend\publish\appsettings.Development.json
+D:\SequenceAlignmentTool\Backend\publish\appsettings.json
+D:\SequenceAlignmentTool\Backend\publish\Backend.dll
+D:\SequenceAlignmentTool\Backend\publish\Backend.deps.json
+D:\SequenceAlignmentTool\Backend\publish\Backend.runtimeconfig.json
+D:\SequenceAlignmentTool\Backend\publish\Backend.pdb
+D:\SequenceAlignmentTool\Backend\publish\Microsoft.AspNetCore.OpenApi.dll
+D:\SequenceAlignmentTool\Backend\publish\Microsoft.OpenApi.dll
+D:\SequenceAlignmentTool\Backend\publish\Swashbuckle.AspNetCore.Swagger.dll
+D:\SequenceAlignmentTool\Backend\publish\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\SequenceAlignmentTool\Backend\publish\Swashbuckle.AspNetCore.SwaggerUI.dll
