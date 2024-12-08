@@ -1,21 +1,36 @@
-var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddCors(options =>
+public class Program
 {
-    options.AddPolicy("AllowFrontend", policy =>
+    public static void Main(string[] args)
     {
-        policy.WithOrigins("https://sequence-alignment-tool.netlify.app/")
-              .AllowAnyMethod()
-              .AllowAnyHeader();
-    });
-});
+        CreateHostBuilder(args).Build().Run();
+    }
 
-builder.Services.AddControllers();
-var app = builder.Build();
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.ConfigureServices(services =>
+                {
+                    services.AddCors(options =>
+                    {
+                        options.AddPolicy("AllowNetlify", builder =>
+                        {
+                            builder.WithOrigins("https://sequence-alignment-tool.netlify.app") // Allow Netlify's URL
+                                   .AllowAnyMethod()  // Allow any HTTP method (GET, POST, etc.)
+                                   .AllowAnyHeader(); // Allow any headers (Content-Type, Authorization, etc.)
+                        });
+                    });
+                    services.AddControllers();
+                });
 
-app.UseCors("AllowFrontend");
-
-app.UseRouting();
-app.MapControllers();
-
-app.Run();
+                webBuilder.Configure(app =>
+                {
+                    app.UseCors("AllowNetlify");  // Use the "AllowNetlify" CORS policy
+                    app.UseRouting();
+                    app.UseEndpoints(endpoints =>
+                    {
+                        endpoints.MapControllers();
+                    });
+                });
+            });
+}
